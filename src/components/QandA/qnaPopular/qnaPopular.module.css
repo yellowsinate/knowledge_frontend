@@ -1,0 +1,23 @@
+.qnaContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 60px;
+    margin: 30px;
+}
+.qnaContainer div{
+    max-height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.moreButton{
+    display: flex;
+    background: #7cc4c3;
+    border-radius: 20px;
+    padding: 20px;
+    width: 101px;
+}
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

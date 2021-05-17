@@ -1,0 +1,19 @@
+.articleContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background: #7cc4c3;
+    border-radius: 20px;
+    margin: 60px;
+    margin-top: 0;
+}
+.articleContainer div{
+    text-align: center;
+    font-size: 18px;
+    padding: 30px 30px 60px 30px;
+}
+.moreButton{
+    cursor: pointer;
+}

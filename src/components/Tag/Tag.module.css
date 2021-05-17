@@ -1,0 +1,13 @@
+.tag{
+    color: white;
+    background: #7cc4c3;
+    width: auto;
+    padding: 15px 30px;
+}
+.tagsContainer{
+    display: flex;
+    gap: 30px;
+    margin: 30px 180px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

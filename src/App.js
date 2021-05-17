@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route} from 'react-router-dom'; 
+import Navbar from './components/Navbar/Navbar';
+import QandA from './components/QandA/QandA';
+import Main from './components/Main/Main';
+import Information from './components/Information/Information';
+import Search from './components/Search/Search';
+import ToStaff from './components/ToStaff/ToStaff';
+import Contacts from './components/Contacts/Contacts'
+import Profile from './components/Profile/Profile'
+import Login from './components/Login/Login'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+      <div className="app-wrapper">
+        <Navbar />
+        <div className="app-wrapper-content">
+          <Route exact path="/" component={Main} />
+          <Route path="/qanda" component={QandA}/>
+          <Route path="/information" component={Information} />
+          <Route path="/search" component={Search} />
+          <Route path="/tostaff" component={ToStaff} />
+          <Route path="/contacts" component={Contacts}/>
+          <Route path="/profile" component={Profile}/>
+          <Route path="/login" component={Login}/>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

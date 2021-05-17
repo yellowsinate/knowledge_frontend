@@ -1,0 +1,10 @@
+h3{
+    text-align: center;
+    margin: 30px;
+}
+.qnaContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 0 180px;
+    gap: 30px;
+}

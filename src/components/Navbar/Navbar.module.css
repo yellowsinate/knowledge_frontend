@@ -1,0 +1,32 @@
+.logoWrapper img{
+    width: 50px;
+}
+.navWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 90px;
+    margin-top: 15px;
+}
+.menuWrapper{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+}
+.menuItem a{
+    color: black;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+}
+.menuItem a.activeLink{
+    color: lightseagreen;
+}
+.menuItem a:hover{
+    transition: 0.5s;
+    color: lightseagreen;
+}
