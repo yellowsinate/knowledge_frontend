@@ -9,6 +9,7 @@ import ToStaff from './components/ToStaff/ToStaff';
 import Contacts from './components/Contacts/Contacts'
 import Profile from './components/Profile/Profile'
 import Login from './components/Login/Login'
+import Logout from './components/Logout/Logout'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/contacts" component={Contacts}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/login" component={Login}/>
+          <Route path="/logout" component={Logout}/>
         </div>
       </div>
     </BrowserRouter>
