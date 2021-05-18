@@ -36,6 +36,14 @@ class Login extends React.Component {
   componentDidMount() {
     if( localStorage.getItem('token') ) {
         this.setState({ isAuth: true })
+        axios.put(`http://185.18.4.100:8000/api/users/`, {token: 'JWT ' + localStorage.getItem('token')}, {headers: {
+            "Content-Type": "application/json",
+            Authorization: 'JWT ' + localStorage.getItem('token')
+        }})
+        .then(res => {
+            this.setState({user_data: res.data})
+        });
+        
     }
     else this.setState({ isAuth: false })
   }
