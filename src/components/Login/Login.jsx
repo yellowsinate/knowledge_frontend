@@ -1,8 +1,17 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import {Redirect} from "react-router-dom";
  
  
 class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isAuth: false,
+      user_data: {}
+    };
+  }
+
  
   handleSubmit = (event) => {
     event.preventDefault()
@@ -24,17 +33,24 @@ class Login extends React.Component {
       this.setState({ isAuth: true })
     })
   }
- 
-  // isAuth = ()=> {
-  //   if (this.isAuth)
-  // }
- 
+  componentDidMount() {
+    if( localStorage.getItem('token') ) {
+        this.setState({ isAuth: true })
+    }
+    else this.setState({ isAuth: false })
+  }
+
+
+
  
   render(){
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
- 
+        {this.state.isAuth && (
+                <Redirect push to="/profile" />
+        )}
+        {!this.state.isAuth && (
+          <form onSubmit={this.handleSubmit}>
           <label>
             Name:
             <input
@@ -54,9 +70,11 @@ class Login extends React.Component {
           </label>
  
           <button type="submit">Submit</button>
- 
         </form>
- 
+        )}
+         
+        
+        
       {/* {this.state.isAuth && (<div>isAuth</div>)}
       {!this.state.isAuth && (<div>noAuth</div>)} */}
  
