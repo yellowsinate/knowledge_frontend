@@ -1,11 +1,14 @@
 import React from 'react';
-import style from './Information.module.css'
+import ArticleBlock from '../Main/article_block/ArticleBlock'
+import Instructions from '../Instructions/Instructions';
+
 
 
 const Information = () => {
     return (
    <div>
-       Information
+       <Instructions />
+       <ArticleBlock />
    </div>
     )
     

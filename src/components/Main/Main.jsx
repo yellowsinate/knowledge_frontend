@@ -4,6 +4,10 @@ import MainAbout from './about_main/MainAbout'
 import ArticleBlock from './article_block/ArticleBlock';
 import TagsCloud from './tags_cloud/TagsCloud';
 import QandABlock from './qanda_block/qanda_block';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 
 const Main = () => {
     return (
@@ -12,6 +16,7 @@ const Main = () => {
        <ArticleBlock />
        <TagsCloud />
        <QandABlock />
+       
    </div>
     )
     

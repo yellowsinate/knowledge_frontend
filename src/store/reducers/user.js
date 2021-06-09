@@ -2,13 +2,12 @@ const initialState = {
     token: null
 }
 
-export default function userReducer (state = initialState, action = {}) {
+export default function userReducer(state = initialState, action = {}) {
     switch (action.type) {
         case 'LOGIN':
-            console.log(state)
             return {
                 ...state,
-                token: action.payload
+                token: action.payload.token
             }
         case 'LOGOUT':
             return {

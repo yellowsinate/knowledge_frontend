@@ -1,9 +1,11 @@
 import {createStore, combineReducers, compose, applyMiddleware,} from 'redux';
 import thunk from 'redux-thunk';
 import userReducer from './reducers/user';
+import instructionsReducer from './reducers/instructions';
 
 const rootReducer = combineReducers({
-    user: userReducer
+    user: userReducer,
+    instructions: instructionsReducer
 })
 
 function saveToLocalStorage(state) {
@@ -25,4 +27,5 @@ const store = createStore(
     composeEnhancers(applyMiddleware(thunk)),
 );
 store.subscribe(() => saveToLocalStorage(store.getState()));
+
 export default store;

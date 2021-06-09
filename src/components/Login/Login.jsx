@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import {Redirect} from "react-router-dom";
-import {connect} from 'react-redux' 
- 
+import {connect} from 'react-redux'
+import { authUser } from "../../store/actions/user";
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -19,18 +19,9 @@ class Login extends React.Component {
  
   loginUser = (event) => {
     event.preventDefault()
-    axios
-    .post(
-      'http://185.18.4.100:8000/token-auth/',
-      {
-        username: this.username,
-        password: this.password
-      }
-    )
-    .then( res => {
-      if (res.status === 200) {
-        this.props.login(res.data.token)
-      }
+    this.props.authUser({
+      username: this.username,
+      password: this.password
     })
   }
 
@@ -82,7 +73,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (payload) => dispatch({type: 'LOGIN', payload})
+    authUser: (payload) => dispatch(authUser(payload))
   }
 }
  
