@@ -1,18 +1,39 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './Navbar.module.css'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { getUserIsStaffFromToken } from '../../store/actions/user'
 
-class NavBar extends React.Component{
+class NavBar extends React.Component {
     constructor(props) {
-        super(props);
-      }
+        super(props)
 
-    logout = () => {
-        this.props.logout()
+        this.state = {
+            token: this.props.token,
+            isStaff: false,
+            loading: true
+        }
     }
 
-    render(){
+    componentWillMount() {
+        this.getUserRole();
+    }
+
+    componentWillReceiveProps() {
+        this.getUserRole();
+    }
+
+    getUserRole = () => {
+        let isStaff = this.props.getUserIsStaffFromToken(this.props.token);
+        this.state.isStaff = isStaff;
+        this.state.loading = false;
+    }
+
+    logout = () => {
+        this.props.logout();
+    }
+
+    render() {
         return (
             <nav className={style.navWrapper}>
                 <div className={style.logoWrapper}>
@@ -33,25 +54,30 @@ class NavBar extends React.Component{
                     <div className={style.menuItem} key="3">
                         <NavLink to="/search" activeClassName={style.activeLink}>Поиск</NavLink>
                     </div>
-                    <div className={style.menuItem} key="4">
-                        <NavLink to="/tostaff" activeClassName={style.activeLink}>Сотрудником</NavLink>
-                    </div>
+                    {
+                        !this.state.loading && this.state.isStaff && this.props.token
+                            ? <div className={style.menuItem} key="4">
+                                <NavLink to="/tostaff" activeClassName={style.activeLink}>Сотрудникам</NavLink>
+                            </div>
+                            : null
+                    }
+
                     <div className={style.menuItem} key="5">
                         <NavLink to="/contacts" activeClassName={style.activeLink}>Контакты</NavLink>
                     </div>
                     {
                         this.props.token
-                        ? <>
-                            <div className={style.menuItem} key="6">
-                                <NavLink to="/profile" activeClassName={style.activeLink}>Личный кабинет</NavLink>
+                            ? <>
+                                <div className={style.menuItem} key="6">
+                                    <NavLink to="/profile" activeClassName={style.activeLink}>Личный кабинет</NavLink>
+                                </div>
+                                <div className={style.menuItem} key="7">
+                                    <NavLink to="/logout" activeClassName={style.activeLink} onClick={this.logout}>Выход</NavLink>
+                                </div>
+                            </>
+                            : <div className={style.menuItem} key="8">
+                                <NavLink to="/login" activeClassName={style.activeLink}>Логин</NavLink>
                             </div>
-                            <div className={style.menuItem} key="7">
-                                <NavLink to="/logout" activeClassName={style.activeLink} onClick={this.logout}>Выход</NavLink>
-                            </div>
-                        </>
-                        : <div className={style.menuItem} key="8">
-                            <NavLink to="/login" activeClassName={style.activeLink}>Логин</NavLink>
-                        </div>
                     }
                 </div>
             </nav>
@@ -59,15 +85,16 @@ class NavBar extends React.Component{
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
         token: state.user.token
     }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
     return {
-      logout: () => dispatch({type: 'LOGOUT'})
+        logout: () => dispatch({ type: 'LOGOUT' }),
+        getUserIsStaffFromToken: (payload) => dispatch(getUserIsStaffFromToken(payload))
     }
 }
 

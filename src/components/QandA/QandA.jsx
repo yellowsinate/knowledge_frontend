@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './QandA.module.css';
 import QnaPopular from './qnaPopular/qnaPopular';
-import TagsCloud from '../Main/tags_cloud/TagsCloud';
+import TagsCloud from '../Tags/TagsCloud/TagsCloud';
 import AskQuestion from './AskQuestion/AskQuestion';
 
 

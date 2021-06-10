@@ -2,10 +2,12 @@ import {createStore, combineReducers, compose, applyMiddleware,} from 'redux';
 import thunk from 'redux-thunk';
 import userReducer from './reducers/user';
 import instructionsReducer from './reducers/instructions';
+import tagsReducer from './reducers/tags';
 
 const rootReducer = combineReducers({
     user: userReducer,
-    instructions: instructionsReducer
+    instructions: instructionsReducer,
+    tags: tagsReducer
 })
 
 function saveToLocalStorage(state) {

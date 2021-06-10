@@ -11,7 +11,7 @@ class InstructionsPage extends React.Component {
 
         this.state = {
             baseUrl: `${process.env.REACT_APP_API_HOST}/instructions/`,
-            page: 1,
+            page: +this.props.match.page,
         }
         this.onChangePage = this.onChangePage.bind(this);
     }

@@ -12,7 +12,7 @@ export default function userReducer(state = initialState, action = {}) {
         case 'LOGOUT':
             return {
                 ...state,
-                token: ''
+                token: null
             }
         default:
             return state;
