@@ -4,8 +4,14 @@ import { toast } from "react-toastify";
 
 export function authUser(userData) {
     return async function authUserThunk(dispatch) {
-        const response = await axios.post('/token-auth/', userData)
-        dispatch({ type: 'LOGIN', payload: response.data })
+        try {
+            const response = await axios.post('/token-auth/', userData)
+            dispatch({ type: 'LOGIN', payload: response.data })
+        } catch (err) {
+            toast.error('Ошибка авторизации!')
+        } finally {
+            toast.success('Авторизация прошла успешно!')
+        }
     }
 }
 

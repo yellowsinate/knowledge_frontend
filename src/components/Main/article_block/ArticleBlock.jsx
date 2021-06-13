@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './ArticleBlock.module.css';
-import Article from '../../Article/Article';
+import Article from '../../Articles/Articles';
 
 
 const ArticleBlock = () => {

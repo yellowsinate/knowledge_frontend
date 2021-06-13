@@ -18,7 +18,7 @@ class Instruction extends React.Component {
       {this.props.instructions.map((item) => {
         return <InstructionBlock data={item} />
       })}
-      <Link to="/instructions/1">
+      <Link to={{pathname: "/instructions/1", query: {page: 1}}}>
         <a>Все записи</a>
       </Link>
     </div>

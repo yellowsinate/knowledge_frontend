@@ -16,6 +16,8 @@ import { ToastContainer } from 'react-toastify';
 import { Component } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import SearchTagPage from './components/SearchPage/SearchTagPage';
+import SearchByTagAndModelPage from './components/SearchPage/SearchByTagAndModelPage';
+import SearchPage from './components/SearchPage/SearchPage';
 
 class App extends Component {
   constructor(props) {
@@ -33,10 +35,11 @@ class App extends Component {
               <Route path="/qanda" component={QandA} />
               <Route path="/information" component={Information} />
               <Route path="/instructions/:page" component={InstructionsPage} />
-              <Route path="/search" component={Search} />
+              <Route path="/search/:search?" component={SearchPage} />
               <PrivateRoute path="/tostaff" component={ToStaff} />
               <Route path="/contacts" component={Contacts} />
-              <Route path="/tags/search/:tag/:page" component={SearchTagPage} />
+              <Route exact path="/tags/search/:tag" render={(props) => <SearchTagPage {...props} />} />
+              <Route exact path="/tags/search/:tag/:model/:page" render={(props) => <SearchByTagAndModelPage {...props} />} />
               {/* <Route path="/search_tag/:tag/:page" component={Contacts} /> */}
               <Route path="/profile" component={Profile} />
               <Route path="/login" component={Login} />

@@ -12,7 +12,7 @@ const Tag = ({ tag }) => {
     if (!redirect)
         return <div className="tag" onClick={() => getToSearch(tag.pk)}>{tag.name}</div>
     else
-        return <Redirect to={`/tags/search/${tag.pk}/1`} />
+        return <Redirect to={`/tags/search/${tag.pk}`} />
 
 }
 export default Tag;

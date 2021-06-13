@@ -12,7 +12,6 @@ class Tags extends Component {
 
     componentWillMount() {
         this.props.getTags();
-        console.log(this.props.tags)
     }
 
     render() {

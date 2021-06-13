@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Article.module.css'
+import style from './Articles.module.css'
 
 
 const Article = (props) => {

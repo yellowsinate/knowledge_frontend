@@ -2,7 +2,11 @@ import axios from 'axios';
 
 const initialState = {
     data: [],
-    dataCount: 0
+    searchData: {},
+    searchDataCount: 0,
+    dataCount: 0,
+    searchModel: [],
+    searchModelCount: 0
 }
 
 export default function tagsReducer(state = initialState, action = {}) {
@@ -14,13 +18,21 @@ export default function tagsReducer(state = initialState, action = {}) {
                 dataCount: action.payload.count
             }
         case 'GET_SEARCH_BY_TAGS':
-            return {
-                ...state
-            }
-        case 'GET_CURRENT_INSTRUCTION':
+            let { articles, instructions, faq, answers } = action.payload
             return {
                 ...state,
-                token: ''
+                searchData: {
+                    articles,
+                    instructions,
+                    faq,
+                    answers
+                }
+            }
+        case 'GET_SEARCH_BY_TAGS_AND_MODEL':
+            return {
+                ...state,
+                searchModel: action.payload.data[action.payload.model],
+                searchModelCount: action.payload.data.count
             }
         default:
             return state;
